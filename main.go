@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"todo-app/todo"
 )
 
@@ -17,11 +18,12 @@ func main() {
 	command := os.Args[1]
 	switch command {
 	case "add":
-		fmt.Println("This task have been added to the list")
+		todoList.Add(os.Args[2])
 	case "remove":
-		fmt.Println("This task have been removed from the list")
+		s, _ := strconv.Atoi(os.Args[2])
+		todoList.Remove(s)
 	case "list":
-		fmt.Println("Here is the list of tasks")
+		todoList.PrintList()
 	default:
 		fmt.Println("Unknown command")
 	}
