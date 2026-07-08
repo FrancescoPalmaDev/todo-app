@@ -36,3 +36,13 @@ func (t *ToDoList) Add(title string) error {
 	t.Tasks = append(t.Tasks, newTask)
 	return t.Save()
 }
+
+func (t *ToDoList) Remove(id int) error {
+	for i, task := range t.Tasks {
+		if task.Id == id {
+			t.Tasks = append(t.Tasks[:i], t.Tasks[i+1:]...)
+			break
+		}
+	}
+	return t.Save()
+}
