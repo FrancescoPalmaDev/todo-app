@@ -2,6 +2,7 @@ package todo
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 )
 
@@ -45,4 +46,10 @@ func (t *ToDoList) Remove(id int) error {
 		}
 	}
 	return t.Save()
+}
+
+func (t *ToDoList) PrintList() {
+	for i := 0; i < len(t.Tasks); i++ {
+		fmt.Printf("%d - %s\n", t.Tasks[i].Id, t.Tasks[i].Title)
+	}
 }
