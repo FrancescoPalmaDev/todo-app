@@ -30,3 +30,9 @@ func (t *ToDoList) Save() error {
 	}
 	return err
 }
+
+func (t *ToDoList) Add(title string) error {
+	newTask := Task{len(t.Tasks) + 1, title}
+	t.Tasks = append(t.Tasks, newTask)
+	return t.Save()
+}
